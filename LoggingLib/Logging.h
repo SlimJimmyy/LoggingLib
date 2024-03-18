@@ -11,8 +11,12 @@
 #include <lmcons.h> 
 #include <fstream>
 #include "discord.h"
+#include <chrono>
+#include <ctime>
 class UserLog {
 private: 
+	
+
 	bool LogEventsToWebhook;
 	std::string URL;
 	std::string userKey;

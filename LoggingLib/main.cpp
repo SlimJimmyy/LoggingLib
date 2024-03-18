@@ -1,15 +1,31 @@
 #include "Logging.h"
 
 
-
+//void Caller(void *func, ...) {
+//	//above here i'll run my other code
+//
+//	//then this is called when i am done
+//	func(...);
+//}
 
 int main() {
 	UserLog UserLogs = {};
-	//DeveloperLog DevLog = {};
-	std::string licenseKey = "*****232&&a4-x2343r=g";
-	std::string webhook = "https://discord.com/api/webhooks/1217383494901170236/-BKLSa6dmlWkQHA5qvU8cJZ7hb1koP9YYfhauIhzqguPXsRx7BUEc-GRK7Dptd-8f9os";
-	UserLogs.InitLogEventsToWebhook(webhook, licenseKey);
-	UserLogs.Failure("Wapow u like hit an error and what not",true,false);
+	DeveloperLog DevLog = {};
+	UserLogs.Log("test print");
+	UserLogs.Warning("test print");
+	UserLogs.Failure("test print",false,false);
+	UserLogs.Success("test print");
+	UserLogs.Instruction("test print");
+	std::cout << "\n\n";
+	DevLog.InitDevMode();
+	DevLog.Failure("test print");
+	DevLog.Log("test print");
+	DevLog.Success("test print");
+	
+	
+	
+
+
 	
 	
 

@@ -9,20 +9,40 @@
 void UserLog::Log(const std::string Message) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, 9);
-	std::cout << NEUTRAL << Message << std::endl;
+
+	time_t now = time(0);
+	struct tm tstruct;
+	char CurTime[80];
+	tstruct = *localtime(&now);
+	strftime(CurTime, sizeof(CurTime), "%X", &tstruct);
+	std::cout << NEUTRAL << "[" << CurTime << "] " << Message << std::endl;
+
 	SetConsoleTextAttribute(hConsole, 9);
+
 }
 
+
 	
+
+	
+
+
 void UserLog::Success(const std::string Message) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
-	std::cout << SUCCESS << Message << std::endl;
+
+	time_t now = time(0);
+	struct tm tstruct;
+	char CurTime[80];
+	tstruct = *localtime(&now);
+	strftime(CurTime, sizeof(CurTime), "%X", &tstruct);
+	std::cout << SUCCESS << "[" << CurTime << "] " << Message << std::endl;
+
 	SetConsoleTextAttribute(hConsole, 9);
 }
-void UserLog::InitLogEventsToWebhook(std::string WebhookURL,std::string LicenseKey) {
-	
+void UserLog::InitLogEventsToWebhook(std::string WebhookURL,std::string LicenseKey) {	
 	URL = WebhookURL;
+
 	if (LicenseKey != "")
 		userKey = LicenseKey;
 
@@ -34,7 +54,16 @@ void UserLog::Failure(const std::string Message,bool userid, bool id) {
 	discord disc = {};
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, 12);
-	std::cout << FAILURE << Message << std::endl;
+
+	time_t now = time(0);
+	struct tm tstruct;
+	char CurTime[80];
+	tstruct = *localtime(&now);
+	strftime(CurTime, sizeof(CurTime), "%X", &tstruct);
+
+	std::cout << FAILURE << "[" << CurTime << "] " << Message << std::endl;
+
+
 	SetConsoleTextAttribute(hConsole, 9);
 	if (LogEventsToWebhook) {
 		std::string title = "APPLICATION FAILURE";
@@ -57,13 +86,29 @@ void UserLog::Warning(const std::string Message) {
 	
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, 14);
-	std::cout << WARNING << Message << std::endl;
+
+	time_t now = time(0);
+	struct tm tstruct;
+	char CurTime[80];
+	tstruct = *localtime(&now);
+	strftime(CurTime, sizeof(CurTime), "%X", &tstruct);
+
+	std::cout << WARNING << "[" << CurTime << "] " << Message << std::endl;
+
 	SetConsoleTextAttribute(hConsole, 9);
 }
 void UserLog::Instruction(const std::string Message) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, 11);
-	std::cout << INSTRUCTION << Message << std::endl;
+
+	time_t now = time(0);
+	struct tm tstruct;
+	char CurTime[80];
+	tstruct = *localtime(&now);
+	strftime(CurTime, sizeof(CurTime), "%X", &tstruct);
+
+	std::cout << INSTRUCTION << "[" << CurTime << "] " << Message << std::endl;
+
 	SetConsoleTextAttribute(hConsole, 9);
 }
 
@@ -126,13 +171,22 @@ void DeveloperLog::InitDevMode() {
 	DevMode = true;
 	SetConsoleTitle(L"Dev Mode");
 	Success("Dev Mode Enabled");
+	
 
 }
 
 void DeveloperLog::Log(const std::string Message) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, 9);
-	std::cout << DEVMODE << Message << std::endl;
+
+	time_t now = time(0);
+	struct tm tstruct;
+	char CurTime[80];
+	tstruct = *localtime(&now);
+	strftime(CurTime, sizeof(CurTime), "%X", &tstruct);
+
+	std::cout << DEVMODE << "[" << CurTime << "] " << Message << std::endl;
+
 	SetConsoleTextAttribute(hConsole, 9);
 }
 
@@ -140,7 +194,15 @@ void DeveloperLog::Log(const std::string Message) {
 void DeveloperLog::Success(const std::string Message) {
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
-	std::cout << DEVMODE << Message << std::endl;
+
+	time_t now = time(0);
+	struct tm tstruct;
+	char CurTime[80];
+	tstruct = *localtime(&now);
+	strftime(CurTime, sizeof(CurTime), "%X", &tstruct);
+
+	std::cout << DEVMODE << "[" << CurTime << "] " << Message << std::endl;
+
 	SetConsoleTextAttribute(hConsole, 9);
 }
 
@@ -148,7 +210,15 @@ void DeveloperLog::Success(const std::string Message) {
 void DeveloperLog::Failure(const std::string Message) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, 12);
-	std::cout << DEVMODE << Message << std::endl;
+
+	time_t now = time(0);
+	struct tm tstruct;
+	char CurTime[80];
+	tstruct = *localtime(&now);
+	strftime(CurTime, sizeof(CurTime), "%X", &tstruct);
+
+	std::cout << DEVMODE << "[" << CurTime << "] " << Message << std::endl;
+
 	SetConsoleTextAttribute(hConsole, 9);
 }
 
